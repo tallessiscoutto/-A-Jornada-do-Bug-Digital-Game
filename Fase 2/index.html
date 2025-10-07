@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 2 - Organizando Dados</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="cabecalho">
+        <h1>Fase 2 - Organizando Dados</h1>
+        <div class="area-letreiro">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Foto" class="arquivo" draggable="true"
+                id="foto">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="Documento" class="arquivo"
+                draggable="true" id="documento">
+            <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música" class="arquivo"
+                draggable="true" id="musica">
+        </div>
+    </div>
+    <div class="ajuda">
+        <p class="descricao">
+            Regra:  <br>Arraste cada arquivo para o local correto: <b>Meu PC</b> ou <b>Nuvem</b>
+        </p>
+    </div>
+    <div class="area-arquivos">
+        <img src="./assets/img/arquivo.png" alt="foto" class="arquivo2" draggable="true" id="foto">
+        <img src="./assets/img/documento.png" alt="documento" class="arquivo2" draggable="true" id="documento">
+        <img src="./assets/img/musica.png" alt="música" class="arquivo2" draggable="true" id="documento">
+    </div>
+    <div class="area-destinos">
+        <div class="destino" id="PC">
+            <h2>Meu PC</h2>
+            <p>Armazenamento Local</p>
+            <img src="./assets/img/PC.png" alt="" class="arquivo2">
+        </div>
+        <div class="destino" id="Nuvem">
+            <h2>Nuvem</h2>
+            <p>Armazenamento Remoto</p>
+            <img src="./assets/img/nuvem.png" alt="" class="arquivo2">
+        </div>
+    </div>
+    <p id="mensagem" class="mensagem"></p>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
