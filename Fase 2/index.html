@@ -1,50 +1,307 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fase 2 - Organizando Dados</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-
-<body>
-    <div class="cabecalho">
-        <h1>Fase 2 - Organizando Dados</h1>
-        <div class="area-letreiro">
-            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="Foto" class="arquivo" draggable="true"
-                id="foto">
-            <img src="https://cdn-icons-png.flaticon.com/512/337/337932.png" alt="Documento" class="arquivo"
-                draggable="true" id="documento">
-            <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música" class="arquivo"
-                draggable="true" id="musica">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fase 2 – Organizando Dados na Nuvem</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="game" role="application" aria-labelledby="title">
+      <header>
+        <div class="header-content">
+          <button
+            class="btn-back"
+            id="backBtn"
+            type="button"
+            title="Voltar para Fase 1"
+          >
+            ← Fase 1
+          </button>
+          <div class="title-area">
+            <h1 id="title">Fase 2 – Organizando Dados</h1>
+            <div class="tips">
+              Arraste cada arquivo para o local correto: Meu PC ou Nuvem ☁️
+            </div>
+          </div>
+          <button
+            class="btn"
+            id="muteBtn"
+            type="button"
+            aria-pressed="false"
+            title="Ativar/Desativar narração"
+          >
+            🔊 Narração
+          </button>
         </div>
-    </div>
-    <div class="ajuda">
-        <p class="descricao">
-            Regra:  <br>Arraste cada arquivo para o local correto: <b>Meu PC</b> ou <b>Nuvem</b>
-        </p>
-    </div>
-    <div class="area-arquivos">
-        <img src="./assets/img/arquivo.png" alt="foto" class="arquivo2" draggable="true" id="foto">
-        <img src="./assets/img/documento.png" alt="documento" class="arquivo2" draggable="true" id="documento">
-        <img src="./assets/img/musica.png" alt="música" class="arquivo2" draggable="true" id="documento">
-    </div>
-    <div class="area-destinos">
-        <div class="destino" id="PC">
-            <h2>Meu PC</h2>
+      </header>
+
+      <div class="coach" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#8ecaff" />
+          <circle cx="9" cy="10" r="1.5" fill="#8ecaff" />
+          <circle cx="15" cy="10" r="1.5" fill="#8ecaff" />
+          <path
+            d="M8 15c1.2 1 2.7 1.5 4 1.5s2.8-.5 4-1.5"
+            stroke="#8ecaff"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span
+          ><strong>Boa, campeão!</strong> Agora vamos organizar arquivos. PC é
+          rápido e local. Nuvem permite acesso de qualquer lugar! 🌐</span
+        >
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressBar"></div>
+        <span class="progress-text" id="progressText"
+          >0/3 arquivos organizados</span
+        >
+      </div>
+
+      <section class="board" aria-describedby="instructions">
+        <div class="files-area" id="filesArea" aria-label="Área de arquivos">
+          <h3>Arquivos para Organizar</h3>
+          <div class="files-list" id="filesList">
+            <div
+              class="file-item"
+              draggable="true"
+              data-file="foto"
+              data-type="imagem"
+              aria-grabbed="false"
+            >
+              <div class="file-icon photo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="photoGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#ff6b9d" />
+                      <stop offset="100%" stop-color="#c44569" />
+                    </linearGradient>
+                  </defs>
+                  <rect
+                    x="15"
+                    y="20"
+                    width="70"
+                    height="60"
+                    rx="8"
+                    fill="url(#photoGrad)"
+                  />
+                  <circle cx="35" cy="38" r="8" fill="#fff" opacity="0.8" />
+                  <path
+                    d="M15 65 L35 45 L50 60 L65 45 L85 65 L85 80 L15 80 Z"
+                    fill="#fff"
+                    opacity="0.6"
+                  />
+                </svg>
+              </div>
+              <div class="file-info">
+                <span class="file-name">Foto.jpg</span>
+                <span class="file-size">2.4 MB</span>
+              </div>
+            </div>
+
+            <div
+              class="file-item"
+              draggable="true"
+              data-file="documento"
+              data-type="texto"
+              aria-grabbed="false"
+            >
+              <div class="file-icon document">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="docGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#4facfe" />
+                      <stop offset="100%" stop-color="#00f2fe" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M25 10 L65 10 L80 25 L80 90 L25 90 Z"
+                    fill="url(#docGrad)"
+                  />
+                  <path d="M65 10 L65 25 L80 25" fill="#fff" opacity="0.4" />
+                  <line
+                    x1="35"
+                    y1="40"
+                    x2="70"
+                    y2="40"
+                    stroke="#fff"
+                    stroke-width="3"
+                    opacity="0.8"
+                  />
+                  <line
+                    x1="35"
+                    y1="52"
+                    x2="70"
+                    y2="52"
+                    stroke="#fff"
+                    stroke-width="3"
+                    opacity="0.8"
+                  />
+                  <line
+                    x1="35"
+                    y1="64"
+                    x2="55"
+                    y2="64"
+                    stroke="#fff"
+                    stroke-width="3"
+                    opacity="0.8"
+                  />
+                </svg>
+              </div>
+              <div class="file-info">
+                <span class="file-name">Documento.docx</span>
+                <span class="file-size">156 KB</span>
+              </div>
+            </div>
+
+            <div
+              class="file-item"
+              draggable="true"
+              data-file="musica"
+              data-type="audio"
+              aria-grabbed="false"
+            >
+              <div class="file-icon music">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="musicGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#a8ff78" />
+                      <stop offset="100%" stop-color="#78ffd6" />
+                    </linearGradient>
+                  </defs>
+                  <rect
+                    x="20"
+                    y="15"
+                    width="60"
+                    height="70"
+                    rx="8"
+                    fill="url(#musicGrad)"
+                  />
+                  <path
+                    d="M50 35 Q48 45 50 55 Q52 65 50 75"
+                    stroke="#fff"
+                    stroke-width="4"
+                    fill="none"
+                    opacity="0.8"
+                  />
+                  <circle cx="42" cy="50" r="3" fill="#fff" opacity="0.8" />
+                  <circle cx="58" cy="50" r="3" fill="#fff" opacity="0.8" />
+                </svg>
+              </div>
+              <div class="file-info">
+                <span class="file-name">Música.mp3</span>
+                <span class="file-size">3.8 MB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="destinations-area">
+          <div
+            class="destination"
+            id="pc"
+            data-destination="pc"
+            aria-label="Armazenamento Local"
+          >
+            <div class="dest-icon pc-icon">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="pcGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#667eea" />
+                    <stop offset="100%" stop-color="#764ba2" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="15"
+                  y="20"
+                  width="70"
+                  height="45"
+                  rx="4"
+                  fill="url(#pcGrad)"
+                />
+                <rect x="10" y="65" width="80" height="3" fill="url(#pcGrad)" />
+                <rect
+                  x="30"
+                  y="68"
+                  width="40"
+                  height="8"
+                  rx="2"
+                  fill="url(#pcGrad)"
+                />
+                <rect
+                  x="20"
+                  y="25"
+                  width="60"
+                  height="35"
+                  fill="#fff"
+                  opacity="0.3"
+                />
+              </svg>
+            </div>
+            <h2>💻 Meu PC</h2>
             <p>Armazenamento Local</p>
-            <img src="./assets/img/PC.png" alt="" class="arquivo2">
-        </div>
-        <div class="destino" id="Nuvem">
-            <h2>Nuvem</h2>
-            <p>Armazenamento Remoto</p>
-            <img src="./assets/img/nuvem.png" alt="" class="arquivo2">
-        </div>
-    </div>
-    <p id="mensagem" class="mensagem"></p>
-    <script src="./assets/js/script.js"></script>
-</body>
+            <div class="dest-files" id="pcFiles"></div>
+            <div class="dest-info">
+              <span class="info-icon">⚡</span>
+              <span>Acesso rápido</span>
+            </div>
+          </div>
 
+          <div
+            class="destination"
+            id="cloud"
+            data-destination="cloud"
+            aria-label="Armazenamento na Nuvem"
+          >
+            <div class="dest-icon cloud-icon">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="cloudGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#30cfd0" />
+                    <stop offset="100%" stop-color="#330867" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M30 55 Q30 35 45 35 Q45 25 55 25 Q65 25 65 35 Q80 35 80 55 Q80 65 70 65 L30 65 Q20 65 20 55 Q20 45 30 45 Z"
+                  fill="url(#cloudGrad)"
+                />
+              </svg>
+            </div>
+            <h2>☁️ Nuvem</h2>
+            <p>Armazenamento Remoto</p>
+            <div class="dest-files" id="cloudFiles"></div>
+            <div class="dest-info">
+              <span class="info-icon">🌐</span>
+              <span>Acesso universal</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="messages" id="messages" aria-live="polite"></div>
+    </div>
+
+    <div class="win" id="win">
+      <div class="card">
+        <h2>🎉 Incrível! Todos os arquivos organizados!</h2>
+        <p>
+          Você entendeu direitinho a diferença entre armazenamento local e na
+          nuvem!
+        </p>
+        <div class="btn-group">
+          <button class="btn" id="resetBtn" type="button">
+            Jogar novamente
+          </button>
+          <button class="btn btn-primary" id="menuBtn" type="button">
+            Menu Principal 🏠
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js" defer></script>
+  </body>
 </html>

@@ -1,78 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fase 1 – Conectar os Dispositivos (Kids)</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="game" role="application" aria-labelledby="title">
-    <header>
-      <h1 id="title">Fase 1 – Conectar os Dispositivos</h1>
-      <div class="tips">Arraste cada peça até o lugar que combina com ela. Dica: Mouse e Teclado usam USB, o Monitor usa Vídeo!</div>
-      <button class="btn" id="muteBtn" type="button" aria-pressed="false" title="Ativar/Desativar narração">🔊 Narração</button>
-    </header>
-
-    <div class="coach" aria-live="polite">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#8ecaff"/><circle cx="9" cy="10" r="1.5" fill="#8ecaff"/><circle cx="15" cy="10" r="1.5" fill="#8ecaff"/><path d="M8 15c1.2 1 2.7 1.5 4 1.5s2.8-.5 4-1.5" stroke="#8ecaff" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <span><strong>Olá!</strong> Coloque cada dispositivo no seu espaço. Se errar, ele volta e você pode tentar de novo 😉</span>
-    </div>
-
-    <section class="board" aria-describedby="instructions">
-      <div class="computer" aria-label="Computador com áreas de conexão">
-        <strong>Computador</strong>
-        <div class="pc-area">
-          <!-- Slots com imagens fantasma para ajudar as crianças -->
-          <div class="slot" data-slot="monitor" data-label="Porta Vídeo (Monitor)">
-            <img class="ghost" alt="sombra monitor" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='20' y='10' width='160' height='80' rx='8' fill='%23bfe5ff'/><rect x='80' y='92' width='40' height='10' fill='%23bfe5ff'/></svg>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fase 1 – Conectar os Dispositivos (Kids)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="game" role="application" aria-labelledby="title">
+      <header>
+        <div class="header-content">
+          <button
+            class="btn-back"
+            id="menuBtn"
+            type="button"
+            title="Voltar ao Menu"
+          >
+            🏠 Menu
+          </button>
+          <div class="title-area">
+            <h1 id="title">Fase 1 – Conectar os Dispositivos</h1>
+            <div class="tips">
+              Arraste cada peça até o lugar que combina com ela. Dica: Mouse e
+              Teclado usam USB, o Monitor usa Vídeo!
+            </div>
           </div>
-          <div class="slot" data-slot="teclado" data-label="Porta USB (Teclado)">
-            <img class="ghost" alt="sombra teclado" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='20' y='40' width='160' height='40' rx='6' fill='%23bfe5ff'/></svg>">
-          </div>
-          <div class="slot" data-slot="mouse" data-label="Porta USB (Mouse)">
-            <img class="ghost" alt="sombra mouse" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='80' y='25' width='40' height='70' rx='20' fill='%23bfe5ff'/><line x1='100' y1='25' x2='100' y2='55' stroke='%23bfe5ff' stroke-width='6'/></svg>">
-          </div>
-          <div class="slot" data-slot="impressora" data-label="USB/Rede (Impressora)">
-            <img class="ghost" alt="sombra impressora" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='50' y='20' width='100' height='30' rx='6' fill='%23bfe5ff'/><rect x='30' y='50' width='140' height='45' rx='8' fill='%23bfe5ff'/></svg>">
-          </div>
+          <button
+            class="btn"
+            id="muteBtn"
+            type="button"
+            aria-pressed="false"
+            title="Ativar/Desativar narração"
+          >
+            🔊 Narração
+          </button>
         </div>
-        <div class="messages" id="messages" aria-live="polite"></div>
+      </header>
+
+      <div class="coach" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#8ecaff" />
+          <circle cx="9" cy="10" r="1.5" fill="#8ecaff" />
+          <circle cx="15" cy="10" r="1.5" fill="#8ecaff" />
+          <path
+            d="M8 15c1.2 1 2.7 1.5 4 1.5s2.8-.5 4-1.5"
+            stroke="#8ecaff"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span
+          ><strong>Olá!</strong> Coloque cada dispositivo no seu espaço. Se
+          errar, ele volta e você pode tentar de novo 😉</span
+        >
       </div>
 
-      <div class="tray" id="tray" aria-label="Bandeja de dispositivos">
-        <!-- Dispositivos (imagens coloridas e amigáveis) -->
-        <div class="item" draggable="true" data-device="mouse" aria-grabbed="false">
-          <div class="thumb"><img alt="Mouse colorido" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23ff8ba7'/><stop offset='100%' stop-color='%239b8bff'/></linearGradient></defs><rect x='30' y='15' width='40' height='70' rx='20' fill='url(%23g)'/><line x1='50' y1='15' x2='50' y2='45' stroke='%23ffffff' stroke-width='4'/></svg>"/></div>
-          <span class="name">Mouse</span>
+      <section class="board" aria-describedby="instructions">
+        <div class="computer" aria-label="Computador com áreas de conexão">
+          <strong>Computador</strong>
+          <div class="pc-area">
+            <!-- Slots com imagens fantasma para ajudar as crianças -->
+            <div
+              class="slot"
+              data-slot="monitor"
+              data-label="Porta Vídeo (Monitor)"
+            >
+              <img
+                class="ghost"
+                alt="sombra monitor"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='20' y='10' width='160' height='80' rx='8' fill='%23bfe5ff'/><rect x='80' y='92' width='40' height='10' fill='%23bfe5ff'/></svg>"
+              />
+            </div>
+            <div
+              class="slot"
+              data-slot="teclado"
+              data-label="Porta USB (Teclado)"
+            >
+              <img
+                class="ghost"
+                alt="sombra teclado"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='20' y='40' width='160' height='40' rx='6' fill='%23bfe5ff'/></svg>"
+              />
+            </div>
+            <div class="slot" data-slot="mouse" data-label="Porta USB (Mouse)">
+              <img
+                class="ghost"
+                alt="sombra mouse"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='80' y='25' width='40' height='70' rx='20' fill='%23bfe5ff'/><line x1='100' y1='25' x2='100' y2='55' stroke='%23bfe5ff' stroke-width='6'/></svg>"
+              />
+            </div>
+            <div
+              class="slot"
+              data-slot="impressora"
+              data-label="USB/Rede (Impressora)"
+            >
+              <img
+                class="ghost"
+                alt="sombra impressora"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 200 120'><rect x='50' y='20' width='100' height='30' rx='6' fill='%23bfe5ff'/><rect x='30' y='50' width='140' height='45' rx='8' fill='%23bfe5ff'/></svg>"
+              />
+            </div>
+          </div>
+          <div class="messages" id="messages" aria-live="polite"></div>
         </div>
 
-        <div class="item" draggable="true" data-device="teclado" aria-grabbed="false">
-          <div class="thumb"><img alt="Teclado colorido" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g2' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23a7ff83'/><stop offset='100%' stop-color='%2300b4d8'/></linearGradient></defs><rect x='10' y='35' width='80' height='30' rx='8' fill='url(%23g2)'/><g stroke='%23ffffff' stroke-width='3'><line x1='18' y1='47' x2='82' y2='47'/><line x1='18' y1='54' x2='82' y2='54'/></g></svg>"/></div>
-          <span class="name">Teclado</span>
-        </div>
+        <div class="tray" id="tray" aria-label="Bandeja de dispositivos">
+          <!-- Dispositivos (imagens coloridas e amigáveis) -->
+          <div
+            class="item"
+            draggable="true"
+            data-device="mouse"
+            aria-grabbed="false"
+          >
+            <div class="thumb">
+              <img
+                alt="Mouse colorido"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23ff8ba7'/><stop offset='100%' stop-color='%239b8bff'/></linearGradient></defs><rect x='30' y='15' width='40' height='70' rx='20' fill='url(%23g)'/><line x1='50' y1='15' x2='50' y2='45' stroke='%23ffffff' stroke-width='4'/></svg>"
+              />
+            </div>
+            <span class="name">Mouse</span>
+          </div>
 
-        <div class="item" draggable="true" data-device="monitor" aria-grabbed="false">
-          <div class="thumb"><img alt="Monitor colorido" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23ffd166'/><stop offset='100%' stop-color='%23ff6b6b'/></linearGradient></defs><rect x='15' y='20' width='70' height='45' rx='8' fill='url(%23g3)'/><rect x='42' y='67' width='16' height='6' rx='2' fill='%23ffffff'/></svg>"/></div>
-          <span class="name">Monitor</span>
-        </div>
+          <div
+            class="item"
+            draggable="true"
+            data-device="teclado"
+            aria-grabbed="false"
+          >
+            <div class="thumb">
+              <img
+                alt="Teclado colorido"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g2' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23a7ff83'/><stop offset='100%' stop-color='%2300b4d8'/></linearGradient></defs><rect x='10' y='35' width='80' height='30' rx='8' fill='url(%23g2)'/><g stroke='%23ffffff' stroke-width='3'><line x1='18' y1='47' x2='82' y2='47'/><line x1='18' y1='54' x2='82' y2='54'/></g></svg>"
+              />
+            </div>
+            <span class="name">Teclado</span>
+          </div>
 
-        <div class="item" draggable="true" data-device="impressora" aria-grabbed="false">
-          <div class="thumb"><img alt="Impressora colorida" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g4' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2366e0ff'/><stop offset='100%' stop-color='%237bffb2'/></linearGradient></defs><rect x='25' y='18' width='50' height='18' rx='4' fill='url(%23g4)'/><rect x='18' y='36' width='64' height='30' rx='6' fill='url(%23g4)'/><rect x='30' y='66' width='40' height='16' rx='3' fill='%23ffffff'/></svg>"/></div>
-          <span class="name">Impressora</span>
+          <div
+            class="item"
+            draggable="true"
+            data-device="monitor"
+            aria-grabbed="false"
+          >
+            <div class="thumb">
+              <img
+                alt="Monitor colorido"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23ffd166'/><stop offset='100%' stop-color='%23ff6b6b'/></linearGradient></defs><rect x='15' y='20' width='70' height='45' rx='8' fill='url(%23g3)'/><rect x='42' y='67' width='16' height='6' rx='2' fill='%23ffffff'/></svg>"
+              />
+            </div>
+            <span class="name">Monitor</span>
+          </div>
+
+          <div
+            class="item"
+            draggable="true"
+            data-device="impressora"
+            aria-grabbed="false"
+          >
+            <div class="thumb">
+              <img
+                alt="Impressora colorida"
+                src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'><defs><linearGradient id='g4' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2366e0ff'/><stop offset='100%' stop-color='%237bffb2'/></linearGradient></defs><rect x='25' y='18' width='50' height='18' rx='4' fill='url(%23g4)'/><rect x='18' y='36' width='64' height='30' rx='6' fill='url(%23g4)'/><rect x='30' y='66' width='40' height='16' rx='3' fill='%23ffffff'/></svg>"
+              />
+            </div>
+            <span class="name">Impressora</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="win" id="win">
+      <div class="card">
+        <h2>🎉 Uhul! Tudo conectado!</h2>
+        <p>Você acertou todos os encaixes e desbloqueou a Fase 2!</p>
+        <div class="btn-group">
+          <button class="btn" id="resetBtn" type="button">
+            Jogar novamente
+          </button>
+          <button class="btn btn-primary" id="nextPhaseBtn" type="button">
+            Ir para Fase 2 🚀
+          </button>
         </div>
       </div>
-    </section>
-  </div>
-
-  <div class="win" id="win">
-    <div class="card">
-      <h2>🎉 Uhul! Tudo conectado!</h2>
-      <p>Você acertou todos os encaixes. Quer brincar de novo?</p>
-      <button class="btn" id="resetBtn" type="button">Jogar novamente</button>
     </div>
-  </div>
 
-  <script src="game.js" defer></script>
-</body>
+    <script src="game.js" defer></script>
+  </body>
 </html>
