@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 3 - Gerenciador de Tarefas Rápido</title>
+    
+    <link rel="stylesheet" href="./assets/css/style.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="game"> 
+
+        <header>
+            <div class="header-content">
+                <a href="../index.html" class="btn-back">← Menu</a> 
+                <div class="title-area">
+                    <h1>Fase 3 - Gerenciador de Tarefas Rápido</h1>
+                    <p class="tips">Gerencie a CPU para acelerar a nave!</p>
+                </div>
+                <button class="btn"><i class="fas fa-volume-up"></i> Narração</button>
+            </div>
+        </header>
+
+        <div class="coach">
+            <i class="fas fa-smile-wink"></i>
+            <span>Olá, Byte! O sistema está lento. Você precisa **clicar** e **fechar** os programas que estão consumindo muita memória.</span>
+        </div>
+
+        <div class="manager-board">
+            
+            <div class="resource-manager">
+                <h2>Uso de Memória e CPU</h2>
+                <div class="cpu-bar-container">
+                    <div id="cpu-bar" class="cpu-bar high" style="width: 95%;"></div> 
+                </div>
+                <p id="cpu-status" class="cpu-status high-text">O sistema está sobrecarregado! (95% Uso)</p>
+            </div>
+
+            <div class="programs-area">
+                <h2>Programas Abertos</h2>
+                
+                <div id="programs-list">
+                    
+                    <div class="program-card">
+                        <div class="program-info">
+                            <div class="program-icon"><i class="fas fa-film"></i></div>
+                            <div class="program-details">
+                                <h3>Editor de Vídeo</h3>
+                                <p>Uso: 40% (PESADO)</p>
+                            </div>
+                        </div>
+                        <button class="close-btn">Fechar</button>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-info">
+                            <div class="program-icon"><i class="fas fa-gamepad"></i></div>
+                            <div class="program-details">
+                                <h3>Jogo de Corrida</h3>
+                                <p>Uso: 35% (PESADO)</p>
+                            </div>
+                        </div>
+                        <button class="close-btn">Fechar</button>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-info">
+                            <div class="program-icon"><i class="fas fa-globe"></i></div>
+                            <div class="program-details">
+                                <h3>Navegador</h3>
+                                <p>Uso: 15%</p>
+                            </div>
+                        </div>
+                        <button class="close-btn">Fechar</button>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-info">
+                            <div class="program-icon"><i class="fas fa-calculator"></i></div>
+                            <div class="program-details">
+                                <h3>Calculadora</h3>
+                                <p>Uso: 5%</p>
+                            </div>
+                        </div>
+                        <button class="close-btn">Fechar</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> <div class="messages">
+            <div class="tip-box">
+                <i class="fas fa-lightbulb"></i>
+                <span>Feche os programas mais pesados para que o computador volte a ser rápido!</span>
+            </div>
+        </div>
+        
+    </div> <div class="win" id="win">
+        <div class="card">
+            <h2>Fase 3 Completa!</h2>
+            <p>Parabéns, Byte! Você liberou a memória do sistema com sucesso. A nave BNCC-5 está rápida novamente!</p>
+            <div class="btn-group">
+                <button class="btn" id="resetbtn" type="button">Jogar novamente</button>
+                <button class="btn btn-primary" id="nextPhaseBtn" type="button">Ir para Fase 4</button> 
+            </div>
+        </div>
+    </div>
+    
+    <script src="./assets/js/script.js" defer></script> 
+</body>
+</html>

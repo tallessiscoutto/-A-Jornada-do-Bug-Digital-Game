@@ -91,10 +91,13 @@ Entenda a diferença entre armazenamento local e na nuvem!
 
 ```
 📁 -A-Jornada-do-Bug-Digital-Game/
-├── 📁 História 1/           # Fase 1
-│   ├── index.html           # Interface da Fase 1
-│   ├── game.js              # Lógica da Fase 1
-│   └── styles.css           # Estilos da Fase 1
+├── 📁 Fase 1/           # Fase 1
+│___assets/
+│     ├── index.html           # Interface da Fase 1
+│      ├── css/
+│       │   └── style.css    # Estilos da Fase 1
+│       └── js/
+│           └── script.js           # Logica da Fase 1
 ├── 📁 Fase 2/               # Fase 2
 │   ├── index.html           # Interface da Fase 2
 │   └── assets/
@@ -102,6 +105,22 @@ Entenda a diferença entre armazenamento local e na nuvem!
 │       │   └── style.css    # Estilos da Fase 2
 │       └── js/
 │           └── script.js    # Lógica da Fase 2
+└── README.md                # Documentação
+├── 📁 Fase 3/               # Fase 3
+│   ├── index.html           # Interface da Fase 3
+│   └── assets/
+│       ├── css/
+│       │   └── style.css    # Estilos da Fase 3
+│       └── js/
+│           └── script.js    # Lógica da Fase 3
+└── README.md                # Documentação
+├── 📁 Fase 4/               # Fase 4
+│   ├── index.html           # Interface da Fase 4
+│   └── assets/
+│       ├── css/
+│       │   └── style.css    # Estilos da Fase 4
+│       └── js/
+│           └── script.js    # Lógica da Fase 4
 └── README.md                # Documentação
 ```
 
