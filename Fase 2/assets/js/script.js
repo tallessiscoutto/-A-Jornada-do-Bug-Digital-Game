@@ -263,13 +263,13 @@ if (resetBtn) {
 
 if (backBtn) {
   backBtn.addEventListener("click", () => {
-    window.location.href = "../História 1/index.html";
+    window.location.href = "../Fase 1/index.html";
   });
 }
 
 if (menuBtn) {
   menuBtn.addEventListener("click", () => {
-    window.location.href = "../História 1/index.html";
+    window.location.href = "../Fase 1/index.html";
   });
 }
 
