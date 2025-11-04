@@ -11,6 +11,7 @@ const muteBtn = document.getElementById("muteBtn");
 const progressBar = document.getElementById("progressBar");
 const progressText = document.getElementById("progressText");
 
+
 const state = {
   organized: 0,
   total: fileItems.length,
