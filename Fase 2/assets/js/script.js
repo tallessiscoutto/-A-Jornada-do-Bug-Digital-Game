@@ -269,7 +269,15 @@ if (backBtn) {
 
 if (menuBtn) {
   menuBtn.addEventListener("click", () => {
-    window.location.href = "../Fase 1/index.html";
+    window.location.href = "../index.html";
+  });
+}
+
+// Botão para ir para a Fase 3
+const nextPhaseBtn = document.getElementById("nextPhaseBtn");
+if (nextPhaseBtn) {
+  nextPhaseBtn.addEventListener("click", () => {
+    window.location.href = "../Fase 3/index.html";
   });
 }
 
@@ -296,4 +304,4 @@ function resetGame() {
 }
 
 // Inicialização
-updateProgress(); 
+updateProgress();
