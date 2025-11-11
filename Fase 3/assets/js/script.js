@@ -16,7 +16,7 @@ class TaskManager {
         
         this.init();
     }
-    
+     
     init() {
         this.setupProgramElements();
         this.setupEventListeners();
