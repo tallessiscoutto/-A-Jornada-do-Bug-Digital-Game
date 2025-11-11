@@ -281,6 +281,21 @@
             Identifique ameaças e proteja suas informações!
           </p>
         </div>
+
+        <div class="phase-card locked" id="phase4Card" onclick="goToPhase4()">
+          <span class="status locked" id="status4">🔒 Bloqueado</span>
+          <div class="phase-header">
+            <div class="phase-icon">🌐</div>
+            <div>
+              <div class="phase-number">Fase 4</div>
+              <h2 class="phase-title">Navegação na Internet</h2>
+            </div>
+          </div>
+          <p class="phase-desc">
+            Aprenda sobre navegação segura, URLs, navegadores e como encontrar
+            informações confiáveis na internet!
+          </p>
+        </div>
       </div>
 
       <div class="footer">
@@ -294,6 +309,7 @@
         const fase1Completa = localStorage.getItem("fase1Completa");
         const fase2Completa = localStorage.getItem("fase2Completa");
         const fase3Completa = localStorage.getItem("fase3Completa");
+        const fase4Completa = localStorage.getItem("fase4Completa");
 
         // Atualiza UI da Fase 1
         if (fase1Completa) {
@@ -320,6 +336,16 @@
           status3.classList.remove("locked");
           status3.textContent = fase3Completa ? "✅ Completa" : "Disponível";
         }
+
+        // Atualiza UI da Fase 4
+        if (fase3Completa) {
+          const phase4Card = document.getElementById("phase4Card");
+          const status4 = document.getElementById("status4");
+
+          phase4Card.classList.remove("locked");
+          status4.classList.remove("locked");
+          status4.textContent = fase4Completa ? "✅ Completa" : "Disponível";
+        }
       }
 
       function goToPhase1() {
@@ -341,6 +367,15 @@
           window.location.href = "Fase 3/index.html";
         } else {
           alert("🔒 Complete a Fase 2 primeiro para desbloquear esta fase!");
+        }
+      }
+
+      function goToPhase4() {
+        const fase3Completa = localStorage.getItem("fase3Completa");
+        if (fase3Completa) {
+          window.location.href = "Fase 4/index.html";
+        } else {
+          alert("🔒 Complete a Fase 3 primeiro para desbloquear esta fase!");
         }
       }
 

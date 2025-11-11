@@ -57,6 +57,7 @@ class TaskManager {
     // Event listeners para botões de controle
     const resetBtn = document.getElementById("resetbtn");
     const menuBtn = document.getElementById("menuBtn");
+    const nextPhaseBtn = document.getElementById("nextPhaseBtn");
 
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
@@ -67,6 +68,12 @@ class TaskManager {
     if (menuBtn) {
       menuBtn.addEventListener("click", () => {
         window.location.href = "../index.html";
+      });
+    }
+
+    if (nextPhaseBtn) {
+      nextPhaseBtn.addEventListener("click", () => {
+        window.location.href = "../Fase 4/index.html";
       });
     }
   }
