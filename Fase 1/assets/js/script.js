@@ -5,7 +5,7 @@ const messages = document.getElementById("messages");
 const win = document.getElementById("win");
 const resetBtn = document.getElementById("resetBtn");
 const muteBtn = document.getElementById("muteBtn");
-
+ 
 const state = { correct: 0, total: items.length, speak: true };
 
 // ---------- NARRAÇÃO (Web Speech Synthesis) ----------

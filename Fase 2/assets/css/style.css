@@ -27,10 +27,11 @@ body {
   color: var(--text);
   font: 600 18px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter,
     sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* layout natural com rolagem */
+  display: block;
+  min-height: 100vh;
   padding: 16px;
+  overflow-y: auto;
 }
 .game {
   width: min(1280px, 98vw);
