@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 4 - O Mapa de Sistemas Operacionais</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="game"> 
+
+        <header>
+            <div class="header-content">
+                <a href="../index.html" class="btn-back">← Menu</a> 
+                <div class="title-area">
+                    <h1>Fase 4 - O Mapa de Sistemas Operacionais</h1>
+                    <p class="tips">Reconheça e instale os diferentes Sistemas Operacionais!</p>
+                </div>
+                <button class="btn"><i class="fas fa-volume-up"></i> Narração</button>
+            </div>
+        </header>
+
+        <div class="coach">
+            <i class="fas fa-brain"></i>
+            <span>Arraste cada **logotipo de SO** para a estação de trabalho correspondente. Qual computador usa qual sistema?</span>
+        </div>
+
+        <div class="so-board">
+            
+            <div class="so-board">
+    
+                <div class="stations-block">
+                    <h2>Estações de Trabalho (Destinos)</h2>
+                    
+                    <div class="stations-grid">
+                        <div class="station-card" data-so="windows">
+                            <i class="fas fa-desktop station-icon"></i>
+                            <h3>Estação Padrão</h3>
+                            <div class="drop-zone" id="drop-windows">Arraste o SO aqui!</div>
+                        </div>
+            
+                        <div class="station-card" data-so="linux">
+                            <i class="fas fa-terminal station-icon"></i>
+                            <h3>Estação de Servidor</h3>
+                            <div class="drop-zone" id="drop-linux">Arraste o SO aqui!</div>
+                        </div>
+            
+                        <div class="station-card" data-so="macos">
+                            <i class="fas fa-laptop station-icon"></i>
+                            <h3>Estação Criativa</h3>
+                            <div class="drop-zone" id="drop-macos">Arraste o SO aqui!</div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="logos-block">
+                    <h2>Logotipos de Sistemas Operacionais</h2>
+                    <div class="logos-grid">
+                        <div class="logo-item" draggable="true" data-so="windows">
+                            <i class="fab fa-windows logo-icon windows-color"></i>
+                            <p>Windows</p>
+                        </div>
+            
+                        <div class="logo-item" draggable="true" data-so="linux">
+                            <i class="fab fa-linux logo-icon linux-color"></i>
+                            <p>Linux</p>
+                        </div>
+            
+                        <div class="logo-item" draggable="true" data-so="macos">
+                            <i class="fab fa-apple logo-icon macos-color"></i>
+                            <p>macOS</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div> <div class="messages">
+            <div class="tip-box">
+                <i class="fas fa-lightbulb"></i>
+                <span>Arraste e solte os logotipos nas portas corretas para ligar as estações!</span>
+            </div>
+        </div>
+        
+    </div> <div class="win" id="win">
+        <div class="card">
+            <h2>Fase 4 Completa!</h2>
+            <p>Parabéns, Byte! Você é um mestre dos Sistemas Operacionais. Missão cumprida!</p>
+            <div class="btn-group">
+                <button class="btn" type="button">Jogar novamente</button>
+                <button class="btn btn-primary" type="button">Voltar ao Menu</button> 
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js" defer></script> 
+</body>
+</html>
