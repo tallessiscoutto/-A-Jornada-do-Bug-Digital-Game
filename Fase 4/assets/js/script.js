@@ -1,27 +1,35 @@
-// Chave usada para guardar o progresso no navegador
+window.addEventListener("DOMContentLoaded", () => {
+  const fase3Completa = localStorage.getItem("fase3Completa");
+  if (!fase3Completa) {
+    alert("⚠️ Complete a Fase 3 primeiro!");
+    setTimeout(() => {
+      window.location.href = "../Fase 3/index.html";
+    }, 1000);
+  }
+});
+
 const PROGRESS_KEY = "progressoJogo";
 
-// Lê o progresso salvo (se não tiver nada, volta objeto vazio)
 function carregarProgresso() {
   const data = localStorage.getItem(PROGRESS_KEY);
   return data ? JSON.parse(data) : {};
 }
 
-// Salva o progresso atualizado
 function salvarProgresso(progresso) {
   localStorage.setItem(PROGRESS_KEY, JSON.stringify(progresso));
 }
 
-// REGISTRA que a Fase 4 foi concluída
 function registrarConclusaoFase4() {
+  localStorage.setItem("fase4Completa", "true");
+
   const progresso = carregarProgresso();
 
   if (!progresso.fasesConcluidas) {
     progresso.fasesConcluidas = {};
   }
 
-  progresso.fasesConcluidas.fase4 = true;        // marca fase 4 como concluída
-  progresso.ultimaFase = 4;                      // opcional, indica última fase alcançada
+  progresso.fasesConcluidas.fase4 = true;
+  progresso.ultimaFase = 4;
   progresso.atualizadoEm = new Date().toISOString();
 
   salvarProgresso(progresso);
