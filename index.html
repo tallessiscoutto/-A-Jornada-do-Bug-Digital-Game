@@ -266,6 +266,20 @@
             fotos, documentos e músicas nos lugares ideais!
           </p>
         </div>
+
+        <div class="phase-card locked" id="phase3Card" onclick="goToPhase3()">
+          <span class="status locked" id="status3">🔒 Bloqueado</span>
+          <div class="phase-header">
+            <div class="phase-icon">🔐</div>
+            <div>
+              <div class="phase-number">Fase 3</div>
+              <h2 class="phase-title">Segurança Digital</h2>
+            </div>
+          </div>
+          <p class="phase-desc">
+            Aprenda sobre segurança online, senhas fortes e proteção de dados. Identifique ameaças e proteja suas informações!
+          </p>
+        </div>
       </div>
 
       <div class="footer">
@@ -278,6 +292,7 @@
       function checkProgress() {
         const fase1Completa = localStorage.getItem("fase1Completa");
         const fase2Completa = localStorage.getItem("fase2Completa");
+        const fase3Completa = localStorage.getItem("fase3Completa");
 
         // Atualiza UI da Fase 1
         if (fase1Completa) {
@@ -294,6 +309,16 @@
           status2.classList.remove("locked");
           status2.textContent = fase2Completa ? "✅ Completa" : "Disponível";
         }
+
+        // Atualiza UI da Fase 3
+        if (fase2Completa) {
+          const phase3Card = document.getElementById("phase3Card");
+          const status3 = document.getElementById("status3");
+
+          phase3Card.classList.remove("locked");
+          status3.classList.remove("locked");
+          status3.textContent = fase3Completa ? "✅ Completa" : "Disponível";
+        }
       }
 
       function goToPhase1() {
@@ -306,6 +331,15 @@
           window.location.href = "Fase 2/index.html";
         } else {
           alert("🔒 Complete a Fase 1 primeiro para desbloquear esta fase!");
+        }
+      }
+
+      function goToPhase3() {
+        const fase2Completa = localStorage.getItem("fase2Completa");
+        if (fase2Completa) {
+          window.location.href = "Fase 3/index.html";
+        } else {
+          alert("🔒 Complete a Fase 2 primeiro para desbloquear esta fase!");
         }
       }
 

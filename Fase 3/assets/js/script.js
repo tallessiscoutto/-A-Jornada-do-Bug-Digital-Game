@@ -18,9 +18,21 @@ class TaskManager {
     }
      
     init() {
+        // Verificar se Fase 2 foi completada
+        this.checkPhase2Access();
         this.setupProgramElements();
         this.setupEventListeners();
         this.updateCPUDisplay();
+    }
+
+    checkPhase2Access() {
+        const fase2Completa = localStorage.getItem('fase2Completa');
+        if (!fase2Completa) {
+            this.showFeedback('⚠️ Complete a Fase 2 primeiro!', 'error');
+            setTimeout(() => {
+                window.location.href = '../Fase 2/index.html';
+            }, 2000);
+        }
     }
     
     setupProgramElements() {
@@ -44,7 +56,7 @@ class TaskManager {
         
         // Event listeners para botões de controle
         const resetBtn = document.getElementById('resetbtn');
-        const nextPhaseBtn = document.getElementById('nextPhaseBtn');
+        const menuBtn = document.getElementById('menuBtn');
         
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
@@ -52,9 +64,9 @@ class TaskManager {
             });
         }
         
-        if (nextPhaseBtn) {
-            nextPhaseBtn.addEventListener('click', () => {
-                this.goToNextPhase();
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                window.location.href = '../index.html';
             });
         }
     }
@@ -134,6 +146,9 @@ class TaskManager {
     }
     
     showWinScreen() {
+        // Salvar progresso da Fase 3
+        localStorage.setItem('fase3Completa', 'true');
+        
         const winScreen = document.getElementById('win');
         if (winScreen) {
             winScreen.style.display = 'grid';
@@ -152,7 +167,7 @@ class TaskManager {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: ${type === 'success' ? '#4CAF50' : '#2196F3'};
+            background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
             color: white;
             padding: 15px 20px;
             border-radius: 8px;
@@ -207,11 +222,6 @@ class TaskManager {
         this.updateCPUDisplay();
         
         this.showFeedback('Jogo reiniciado!');
-    }
-    
-    goToNextPhase() {
-        // Redirecionar para próxima fase (assumindo que existe uma Fase 4)
-        window.location.href = '../Fase 4/index.html';
     }
 }
 
