@@ -13,9 +13,7 @@
   box-sizing: border-box;
 }
 html,
-body {
-  height: 100%;
-}
+
 body {
   margin: 0;
   background: radial-gradient(
@@ -35,6 +33,7 @@ body {
 }
 .game {
   width: min(1280px, 98vw);
+  margin: 39px auto;
   border-radius: var(--radius);
   background: linear-gradient(180deg, #101943aa, #0d1438aa);
   box-shadow: var(--shadow);
@@ -77,6 +76,7 @@ h1 {
   cursor: pointer;
   font-size: 14px;
   transition: 0.2s;
+  text-decoration: none;
 }
 .btn-back:hover {
   filter: brightness(1.12);

@@ -15,18 +15,24 @@
 
         <header>
             <div class="header-content">
-                <a href="../index.html" class="btn-back">← Menu</a>
+                <a href="../index.html" class="btn-back">🏠 Menu</a>
                 <div class="title-area">
                     <h1>Fase 3 - Gerenciador de Tarefas Rápido</h1>
                     <p class="tips">Gerencie a CPU para acelerar o computador!</p>
                 </div>
-                <button class="btn-back">🔊 Narração</button>
+                <button class="btn"
+                        id="narrationBtn3"
+                        type="button"
+                        aria-pressed="false"
+                        title="Ativar/Desativar narração">
+                        🔊 Narração
+                </button>
             </div>
         </header>
 
         <div class="coach">
             <i class="fas fa-smile-wink"></i>
-            <span>Olá, Byte! O sistema está lento. Você precisa **clicar** e **fechar** os programas que estão consumindo muita memória.</span>
+            <span id="instructionText3">Olá, Byte! O sistema está lento. Você precisa **clicar** e **fechar** os programas que estão consumindo muita memória.</span>
         </div>
 
         <div class="manager-board">
@@ -110,6 +116,7 @@
         </div>
     </div>
     
-    <script src="./assets/js/script.js" defer></script> 
+    <script src="./assets/js/script.js" defer></script>
+    </script> 
 </body>
 </html>

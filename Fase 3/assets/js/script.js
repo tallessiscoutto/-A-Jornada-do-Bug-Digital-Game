@@ -1,6 +1,3 @@
-// Fase 3 - Gerenciador de Tarefas Rápido
-// Sistema de gerenciamento de memória e CPU
-
 class TaskManager {
   constructor() {
     this.programs = [
