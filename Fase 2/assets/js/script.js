@@ -304,4 +304,4 @@ function resetGame() {
 }
 
 // Inicialização
-updateProgress(); 
+updateProgress();
