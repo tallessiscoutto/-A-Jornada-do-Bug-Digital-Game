@@ -27,11 +27,12 @@ body {
   color: var(--text);
   font: 600 18px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter,
     sans-serif;
-  display: flex;
+  display: block;
   align-items: flex-start; 
   justify-content: center;
-  padding: 16px;
-  min-height: 100vh; /* Garante que o body ocupa a tela toda */
+  padding: 14px;
+  min-height: 100vh; 
+  overflow-y: auto;
 }
 .game {
   width: min(1280px, 98vw);
@@ -40,7 +41,6 @@ body {
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
   padding: 20px;
-  margin-top: 30px; /* Espaço para o topo da página */
 }
 
 /* Header */

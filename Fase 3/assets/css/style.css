@@ -63,7 +63,6 @@
     margin-top: 4px;
   }
   .btn-back {
-    appearance: none;
     border: 2px solid #2a3b86;
     background: linear-gradient(180deg, #17245a, #0f1a44);
     color: #e8f1ff;
@@ -73,6 +72,7 @@
     cursor: pointer;
     font-size: 14px;
     transition: 0.2s;
+    text-decoration: none;
   }
   .btn-back:hover {
     filter: brightness(1.12);
