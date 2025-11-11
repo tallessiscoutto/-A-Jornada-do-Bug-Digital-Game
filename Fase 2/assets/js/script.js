@@ -261,6 +261,13 @@ if (resetBtn) {
   resetBtn.addEventListener("click", resetGame);
 }
 
+const menuBtnHeader = document.getElementById("menuBtnHeader");
+if (menuBtnHeader) {
+  menuBtnHeader.addEventListener("click", () => {
+    window.location.href = "../index.html";
+  });
+}
+
 if (backBtn) {
   backBtn.addEventListener("click", () => {
     window.location.href = "../index.html";
@@ -273,7 +280,6 @@ if (menuBtn) {
   });
 }
 
-// Botão para ir para a Fase 3
 const nextPhaseBtn = document.getElementById("nextPhaseBtn");
 if (nextPhaseBtn) {
   nextPhaseBtn.addEventListener("click", () => {
