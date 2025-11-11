@@ -263,7 +263,7 @@ if (resetBtn) {
 
 if (backBtn) {
   backBtn.addEventListener("click", () => {
-    window.location.href = "../Fase 1/index.html";
+    window.location.href = "../index.html";
   });
 }
 
