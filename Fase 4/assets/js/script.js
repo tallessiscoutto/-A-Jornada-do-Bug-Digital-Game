@@ -3,6 +3,7 @@ const dropZones = document.querySelectorAll(".drop-zone");
 const winModal = document.getElementById("win");
 const resetBtn = document.getElementById("resetBtn");
 const menuBtn = document.getElementById("menuBtn");
+const victoryBtn = document.getElementById("victoryBtn");
 
 let correctDrops = 0;
 
@@ -62,6 +63,7 @@ dropZones.forEach((zone) => {
 });
 
 function showWin() {
+  registrarConclusaoFase4();
   winModal.style.display = "grid";
 }
 
@@ -88,6 +90,13 @@ resetBtn.addEventListener("click", () => {
 menuBtn.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
+
+if (victoryBtn) {
+  victoryBtn.addEventListener("click", () => {
+    registrarConclusaoFase4();
+    window.location.href = "../vitoria/index.html";
+  });
+}
 window.addEventListener("DOMContentLoaded", () => {
   const fase3Completa = localStorage.getItem("fase3Completa");
   if (!fase3Completa) {

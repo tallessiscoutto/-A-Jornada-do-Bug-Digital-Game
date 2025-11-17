@@ -20,9 +20,12 @@
         margin: 0;
         padding: 0;
       }
-      html,
+      html {
+        min-height: 100%;
+        background: #050814;
+      }
       body {
-        height: 100%;
+        min-height: 100vh;
       }
       body {
         margin: 0;
@@ -35,20 +38,47 @@
         color: var(--text);
         font: 600 18px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter,
           sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
+        padding: 24px 12px 32px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(900px 700px at 15% 20%, rgba(118, 227, 255, 0.16), transparent 55%),
+          radial-gradient(800px 650px at 85% 10%, rgba(167, 139, 250, 0.16), transparent 55%),
+          radial-gradient(700px 600px at 25% 85%, rgba(251, 113, 133, 0.12), transparent 50%);
+        filter: blur(0.4px);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(120deg, rgba(12, 20, 60, 0.5), transparent 35%, transparent 65%, rgba(8, 14, 40, 0.6)),
+          radial-gradient(600px 480px at 70% 65%, rgba(34, 197, 94, 0.08), transparent 55%),
+          radial-gradient(520px 420px at 30% 60%, rgba(118, 227, 255, 0.08), transparent 60%);
+        mix-blend-mode: screen;
+        opacity: 0.35;
+        z-index: -1;
+        pointer-events: none;
       }
 
       .container {
-        width: min(800px, 95vw);
+        width: min(1040px, 96vw);
         border-radius: var(--radius);
         background: linear-gradient(180deg, #101943aa, #0d1438aa);
         box-shadow: var(--shadow);
         backdrop-filter: blur(8px);
         padding: 40px 30px;
         text-align: center;
+        margin: 0 auto;
       }
 
       .logo {
@@ -219,12 +249,24 @@
 
       @media (max-width: 600px) {
         .container {
-          padding: 25px 20px;
+          padding: 24px 18px;
         }
         .status {
           position: static;
           display: inline-block;
           margin-top: 10px;
+        }
+        body {
+          padding: 16px 10px 24px;
+        }
+        .phase-card {
+          padding: 18px;
+        }
+        .phase-title {
+          font-size: 20px;
+        }
+        .phase-desc {
+          font-size: 14px;
         }
       }
     </style>
@@ -296,6 +338,20 @@
             informações confiáveis na internet!
           </p>
         </div>
+
+        <div class="phase-card locked" id="victoryCard" onclick="goToVictory()">
+          <span class="status locked" id="statusVictory">🔒 Bloqueado</span>
+          <div class="phase-header">
+            <div class="phase-icon">🏆</div>
+            <div>
+              <div class="phase-number">Final</div>
+              <h2 class="phase-title">Tela de Vitória</h2>
+            </div>
+          </div>
+          <p class="phase-desc">
+            Entre na sala de comemoração e veja sua conquista final na Jornada do Bug Digital.
+          </p>
+        </div>
       </div>
 
       <div class="footer">
@@ -310,6 +366,7 @@
         const fase2Completa = localStorage.getItem("fase2Completa");
         const fase3Completa = localStorage.getItem("fase3Completa");
         const fase4Completa = localStorage.getItem("fase4Completa");
+        const jogoCompleto = localStorage.getItem("jogoCompleto");
 
         // Atualiza UI da Fase 1
         if (fase1Completa) {
@@ -346,15 +403,54 @@
           status4.classList.remove("locked");
           status4.textContent = fase4Completa ? "✅ Completa" : "Disponível";
         }
+
+        // Atualiza tela final
+        const finalCard = document.getElementById("victoryCard");
+        const finalStatus = document.getElementById("statusVictory");
+        if (finalCard && finalStatus) {
+          if (fase4Completa) {
+            finalCard.classList.remove("locked");
+            finalStatus.classList.remove("locked");
+            finalStatus.textContent = jogoCompleto ? "🎉 Visitada" : "Disponível";
+          } else {
+            finalCard.classList.add("locked");
+            finalStatus.classList.add("locked");
+            finalStatus.textContent = "🔒 Bloqueado";
+          }
+        }
+      }
+
+      // Desbloqueia áudio antecipadamente após interação do usuário
+      let audioWarm = false;
+      function warmVictoryAudio() {
+        if (audioWarm) return;
+        audioWarm = true;
+        try {
+          const audio = new Audio("vitoria/assets/resources/GPW Tarzan Boy.mp3");
+          audio.muted = true;
+          audio.volume = 0;
+          audio.play().then(() => {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.muted = false;
+            localStorage.setItem("audioLiberado", "1");
+          }).catch(() => {
+            audioWarm = false;
+          });
+        } catch (e) {
+          audioWarm = false;
+        }
       }
 
       function goToPhase1() {
+        warmVictoryAudio();
         window.location.href = "Fase 1/index.html";
       }
 
       function goToPhase2() {
         const fase1Completa = localStorage.getItem("fase1Completa");
         if (fase1Completa) {
+          warmVictoryAudio();
           window.location.href = "Fase 2/index.html";
         } else {
           alert("🔒 Complete a Fase 1 primeiro para desbloquear esta fase!");
@@ -364,6 +460,7 @@
       function goToPhase3() {
         const fase2Completa = localStorage.getItem("fase2Completa");
         if (fase2Completa) {
+          warmVictoryAudio();
           window.location.href = "Fase 3/index.html";
         } else {
           alert("🔒 Complete a Fase 2 primeiro para desbloquear esta fase!");
@@ -373,9 +470,21 @@
       function goToPhase4() {
         const fase3Completa = localStorage.getItem("fase3Completa");
         if (fase3Completa) {
+          warmVictoryAudio();
           window.location.href = "Fase 4/index.html";
         } else {
           alert("🔒 Complete a Fase 3 primeiro para desbloquear esta fase!");
+        }
+      }
+
+      function goToVictory() {
+        const fase4Completa = localStorage.getItem("fase4Completa");
+        if (fase4Completa) {
+          warmVictoryAudio();
+          localStorage.setItem("jogoCompleto", "true");
+          window.location.href = "vitoria/index.html";
+        } else {
+          alert("🔒 Termine todas as fases para desbloquear a tela de vitória!");
         }
       }
 

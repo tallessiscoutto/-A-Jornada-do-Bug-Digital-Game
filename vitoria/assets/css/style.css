@@ -1,0 +1,129 @@
+:root {
+  --bg: #0b1020;
+  --panel: #101943;
+  --accent: #76e3ff;
+  --text: #eef3ff;
+  --muted: #a9b6d9;
+  --radius: 18px;
+  --shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(1200px 700px at 20% 10%, #1b2452 0%, #0b1020 45%, #060912 100%);
+  color: var(--text);
+  font: 600 18px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.wrap {
+  width: min(900px, 96vw);
+  background: linear-gradient(180deg, #101943cc, #0d1438cc);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  text-align: center;
+}
+
+h1 {
+  margin: 8px 0;
+  font-size: clamp(28px, 5vw, 40px);
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.card {
+  margin-top: 24px;
+  padding: 22px;
+  background: #0f1a44;
+  border: 2px solid #2a3a86;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.card h2 {
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+.card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn {
+  appearance: none;
+  border: 2px solid #2a3b86;
+  background: linear-gradient(180deg, #17245a, #0f1a44);
+  color: #e8f1ff;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border-color: #1e504a;
+  background: linear-gradient(180deg, #1b7f70, #155d52);
+}
+.btn-sound {
+  border-color: #2b7390;
+  background: linear-gradient(180deg, #1b3b6f, #132a4f);
+}
+
+.footnote {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: 24px 18px;
+  }
+  .card {
+    text-align: center;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}
