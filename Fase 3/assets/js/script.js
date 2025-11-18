@@ -7,6 +7,7 @@ class TaskManager {
       { name: "Calculadora", usage: 5, element: null, closed: false },
     ];
 
+    
     this.totalUsage = 95; // Uso inicial total
     this.safeLevel = 30; // Nível seguro de CPU
     this.gameWon = false;

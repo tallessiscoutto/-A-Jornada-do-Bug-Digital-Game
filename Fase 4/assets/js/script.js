@@ -7,6 +7,7 @@ const victoryBtn = document.getElementById("victoryBtn");
 
 let correctDrops = 0;
 
+
 logos.forEach((logo) => {
   logo.addEventListener("dragstart", (e) => {
     logo.classList.add("dragging");
