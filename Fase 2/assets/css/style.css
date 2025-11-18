@@ -30,6 +30,7 @@ body {
   /* layout natural com rolagem */
   display: block;
   min-height: 100vh;
+  margin: 39px auto;
   padding: 16px;
   overflow-y: auto;
 }
