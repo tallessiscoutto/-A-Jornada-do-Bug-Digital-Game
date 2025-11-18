@@ -6,6 +6,7 @@ const menuBtn = document.getElementById("menuBtn");
 
 let correctDrops = 0;
 
+
 logos.forEach((logo) => {
   logo.addEventListener("dragstart", (e) => {
     logo.classList.add("dragging");
