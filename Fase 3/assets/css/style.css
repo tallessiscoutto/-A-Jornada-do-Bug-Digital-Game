@@ -30,8 +30,8 @@
     padding: 16px; 
   }
   .game {
-    width: min(1280px, 98vw);
-    margin: 39px auto;
+    width: min(1280px, 95vw);
+    margin: 38px auto;
     border-radius: var(--radius);
     background: linear-gradient(180deg, #101943aa, #0d1438aa);
     box-shadow: var(--shadow);
