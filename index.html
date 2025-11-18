@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>A Jornada do Bug - Menu Principal</title>
+    <title>A Jornada do Bug - Menu Principal -</title>
     <style>
       :root {
         --bg: #0b1020;
@@ -47,10 +47,21 @@
         content: "";
         position: fixed;
         inset: 0;
-        background:
-          radial-gradient(900px 700px at 15% 20%, rgba(118, 227, 255, 0.16), transparent 55%),
-          radial-gradient(800px 650px at 85% 10%, rgba(167, 139, 250, 0.16), transparent 55%),
-          radial-gradient(700px 600px at 25% 85%, rgba(251, 113, 133, 0.12), transparent 50%);
+        background: radial-gradient(
+            900px 700px at 15% 20%,
+            rgba(118, 227, 255, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            800px 650px at 85% 10%,
+            rgba(167, 139, 250, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            700px 600px at 25% 85%,
+            rgba(251, 113, 133, 0.12),
+            transparent 50%
+          );
         filter: blur(0.4px);
         z-index: -1;
         pointer-events: none;
@@ -60,10 +71,23 @@
         content: "";
         position: fixed;
         inset: 0;
-        background:
-          linear-gradient(120deg, rgba(12, 20, 60, 0.5), transparent 35%, transparent 65%, rgba(8, 14, 40, 0.6)),
-          radial-gradient(600px 480px at 70% 65%, rgba(34, 197, 94, 0.08), transparent 55%),
-          radial-gradient(520px 420px at 30% 60%, rgba(118, 227, 255, 0.08), transparent 60%);
+        background: linear-gradient(
+            120deg,
+            rgba(12, 20, 60, 0.5),
+            transparent 35%,
+            transparent 65%,
+            rgba(8, 14, 40, 0.6)
+          ),
+          radial-gradient(
+            600px 480px at 70% 65%,
+            rgba(34, 197, 94, 0.08),
+            transparent 55%
+          ),
+          radial-gradient(
+            520px 420px at 30% 60%,
+            rgba(118, 227, 255, 0.08),
+            transparent 60%
+          );
         mix-blend-mode: screen;
         opacity: 0.35;
         z-index: -1;
@@ -349,7 +373,8 @@
             </div>
           </div>
           <p class="phase-desc">
-            Entre na sala de comemoração e veja sua conquista final na Jornada do Bug Digital.
+            Entre na sala de comemoração e veja sua conquista final na Jornada
+            do Bug Digital.
           </p>
         </div>
       </div>
@@ -411,7 +436,9 @@
           if (fase4Completa) {
             finalCard.classList.remove("locked");
             finalStatus.classList.remove("locked");
-            finalStatus.textContent = jogoCompleto ? "🎉 Visitada" : "Disponível";
+            finalStatus.textContent = jogoCompleto
+              ? "🎉 Visitada"
+              : "Disponível";
           } else {
             finalCard.classList.add("locked");
             finalStatus.classList.add("locked");
@@ -426,17 +453,22 @@
         if (audioWarm) return;
         audioWarm = true;
         try {
-          const audio = new Audio("vitoria/assets/resources/GPW Tarzan Boy.mp3");
+          const audio = new Audio(
+            "vitoria/assets/resources/GPW Tarzan Boy.mp3"
+          );
           audio.muted = true;
           audio.volume = 0;
-          audio.play().then(() => {
-            audio.pause();
-            audio.currentTime = 0;
-            audio.muted = false;
-            localStorage.setItem("audioLiberado", "1");
-          }).catch(() => {
-            audioWarm = false;
-          });
+          audio
+            .play()
+            .then(() => {
+              audio.pause();
+              audio.currentTime = 0;
+              audio.muted = false;
+              localStorage.setItem("audioLiberado", "1");
+            })
+            .catch(() => {
+              audioWarm = false;
+            });
         } catch (e) {
           audioWarm = false;
         }
@@ -484,7 +516,9 @@
           localStorage.setItem("jogoCompleto", "true");
           window.location.href = "vitoria/index.html";
         } else {
-          alert("🔒 Termine todas as fases para desbloquear a tela de vitória!");
+          alert(
+            "🔒 Termine todas as fases para desbloquear a tela de vitória!"
+          );
         }
       }
 
